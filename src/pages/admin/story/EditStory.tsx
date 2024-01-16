@@ -39,7 +39,7 @@ const EditStory = () => {
 
   useEffect(() => {
     if (!storyId) return;
-    axiosInstance.get(`http://localhost:3000/api/story/${storyId}`).then(res => {
+    axiosInstance.get(`/story/${storyId}`).then(res => {
       const story = res.data.data;
       reset({
         title: story?.title,
@@ -84,7 +84,7 @@ const EditStory = () => {
 
 
   const handleEdit = useCallback((formData: any) => {
-    axiosInstance.put("http://localhost:3000/api/story/" + storyId, {
+    axiosInstance.put("/story/" + storyId, {
       ...formData,
       chapters: storyChapters??[],
       tags: JSON.stringify(formData.tags),

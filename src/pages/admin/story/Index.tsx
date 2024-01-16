@@ -24,7 +24,6 @@ const Index = () => {
   const { data: stories = [], isLoading } = useQuery<Array<Story & TimeStamp>>({
     queryKey: ['stories', searchParams, category, status],
     queryFn: async function ()  {
-      console.log(category)
       const { data } = await axiosInstance.get("/story" + paramify({
         search: searchParams,
         category,

@@ -44,7 +44,7 @@ const AddStory = () => {
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: async (formData: Story) => {
-      const data = await axiosInstance.post("http://localhost:3000/api/story", {
+      const data = await axiosInstance.post("/story", {
         ...formData,
       }, {
         headers: {

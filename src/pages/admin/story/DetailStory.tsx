@@ -9,7 +9,7 @@ const DetailStory = () => {
   const {id : StoryId } = useParams();
   const [story, setStory] = useState<Story>();
   useEffect(() => {
-    axiosInstance.get(`http://localhost:3000/api/story/${StoryId}`).then(res => {
+    axiosInstance.get(`/story/${StoryId}`).then(res => {
       setStory(res.data.data);
     }).catch(err => {
       console.log(err);
