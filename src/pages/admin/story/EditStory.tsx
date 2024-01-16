@@ -17,7 +17,6 @@ const EditStory = () => {
   const { isupdate } = useQueryParams();
   const { storyChapters, setStoryChapters, deleteStoryChapter } = useStoryChapterStore();
 
-
   const {
     register,
     handleSubmit,
@@ -87,7 +86,7 @@ const EditStory = () => {
   const handleEdit = useCallback((formData: any) => {
     axiosInstance.put("http://localhost:3000/api/story/" + storyId, {
       ...formData,
-      chapters: storyChapters,
+      chapters: storyChapters??[],
       tags: JSON.stringify(formData.tags),
       cover: typeof formData.cover === "string" ? null : formData.cover[0],
     }, {
@@ -106,7 +105,7 @@ const EditStory = () => {
         });
       });
     });
-  }, [storyId]);
+  }, [storyId, storyChapters]);
 
   return (
     <MainLayout>

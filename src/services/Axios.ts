@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://75.119.156.145:5000/api",
+  baseURL: "https://basofi.macroma.id/api",
   headers: {
     "Content-type": "application/json",
   },
