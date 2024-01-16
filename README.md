@@ -31,6 +31,6 @@
 
 <h1>Website URL</h1>
 <hr>
-<p>Frontend : <a href ="https://seleksi-biggio-fe.vercel.app/story">https://seleksi-biggio-fe.vercel.app/</a></p>
+<p>Frontend : <a href ="https://seleksi-biggio-fe.vercel.app>https://seleksi-biggio-fe.vercel.app/</a></p>
 <p>Backend : <a href ="https://basofi.macroma.id/api">https://basofi.macroma.id/api</a></p>
 
