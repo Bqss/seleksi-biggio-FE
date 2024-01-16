@@ -70,7 +70,7 @@ const AddStory = () => {
         icon: "success"
       })
       navigate("/story");
-    }).catch((err: AxiosError) => {
+    }).catch((err: any) => {
       if (err?.response?.status == 400) {
         const errors = err?.response?.data?.errors;
         Object.keys(errors).forEach((err: any) => {
@@ -126,14 +126,14 @@ const AddStory = () => {
                 <label htmlFor="" className='mb-4 block'>Title</label>
                 <input type="text" className='input input-bordered block w-full' id="" {...register("title")} />
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors?.title?.message) ?? ""}</span>
                 ) : ""}
               </div>
               <div className='flex-1'>
                 <label htmlFor="" className='mb-4 block'>Writer Name</label>
                 <input {...register("author")} type="text" className='input input-bordered block w-full' id="" />
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors?.author?.message) ?? ""}</span>
                 ) : ""}
               </div>
             </div>
@@ -141,7 +141,7 @@ const AddStory = () => {
               <label htmlFor="" className='block mb-4'>Synopsis</label>
               <textarea {...register("synopsis")} className='textarea textarea-bordered w-full' rows={5} id="" ></textarea>
               {errors.synopsis ? (
-                <span className='text-xs text-error'>{errors.synopsis.message ?? ""}</span>
+                <span className='text-xs text-error'>{String(errors?.synopsis?.message) ?? ""}</span>
               ) : ""}
             </div>
             <div className='flex gap-6'>
@@ -154,7 +154,7 @@ const AddStory = () => {
                   <option value="health">Health</option>
                 </select>
                 {errors.category ? (
-                  <span className='text-xs text-error'>{errors.category.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors?.category?.message) ?? ""}</span>
                 ) : ""}
               </div>
               <div className='flex-1'>
@@ -169,7 +169,7 @@ const AddStory = () => {
                   onChange={(tags) => setValue("tags", tags)}
                 />
                 {errors.tags ? (
-                  <span className='text-xs text-error'>{errors.tags.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.tags.message) ?? ""}</span>
                 ) : ""}
               </div>
             </div>
@@ -178,7 +178,7 @@ const AddStory = () => {
                 <label htmlFor="" className='mb-4 block'>Cover Image</label>
                 <input type="file" {...register("cover")} accept='image/png, image/jpg' multiple={false} className='file-input file-input-bordered file-input-primary w-full ' id="" />
                 {errors.cover ? (
-                  <span className='text-xs text-error'>{errors.cover.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.cover.message )?? ""}</span>
                 ) : ""}
               </div>
               <div className='flex-1'>
@@ -189,7 +189,7 @@ const AddStory = () => {
                   <option value="draft">Draft</option>
                 </select>
                 {errors.status ? (
-                  <span className='text-xs text-error'>{errors.status.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.status.message )?? ""}</span>
                 ) : ""}
               </div>
             </div>

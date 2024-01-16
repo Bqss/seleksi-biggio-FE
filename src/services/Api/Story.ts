@@ -1,8 +1,5 @@
-class Story{
-  static async getAllStory(params : {params : }): Promise<Story> {
+class StoryServices{
 
-
-  }
 }
 
-export default Story;
+export default StoryServices;

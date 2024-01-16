@@ -80,7 +80,6 @@ const EditStory = () => {
   }
 
   const handleNavigateAddChapter = () => {
-    setPrevFormData(getValues());
     navigate("/story/chapter/create" + paramify({ isupdate: true, storyid: storyId }))
   }
 
@@ -126,14 +125,14 @@ const EditStory = () => {
                 <label htmlFor="" className='mb-4 block'>Title</label>
                 <input type="text" className='input input-bordered block w-full' id="" {...register("title")} />
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
                 ) : ""}
               </div>
               <div className='flex-1'>
                 <label htmlFor="" className='mb-4 block'>Writer Name</label>
                 <input {...register("author")} type="text" className='input input-bordered block w-full' id="" />
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
                 ) : ""}
               </div>
             </div>
@@ -141,7 +140,7 @@ const EditStory = () => {
               <label htmlFor="" className='block mb-4'>Synopsis</label>
               <textarea {...register("synopsis")} className='textarea textarea-bordered w-full' rows={5} id="" ></textarea>
               {errors.title ? (
-                <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
               ) : ""}
             </div>
             <div className='flex gap-6'>
@@ -154,7 +153,8 @@ const EditStory = () => {
                   <option value="health">Health</option>
                 </select>
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
+
                 ) : ""}
               </div>
               <div className='flex-1'>
@@ -169,7 +169,7 @@ const EditStory = () => {
                   onChange={(tags) => setValue("tags", tags)}
                 />
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
                 ) : ""}
               </div>
             </div>
@@ -183,7 +183,7 @@ const EditStory = () => {
                   <option value="draft">Draft</option>
                 </select>
                 {errors.title ? (
-                  <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+                  <span className='text-xs text-error'>{String(errors.title.message) ?? ""}</span>
                 ) : ""}
               </div>
             </div>

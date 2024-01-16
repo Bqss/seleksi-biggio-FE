@@ -1,8 +1,8 @@
 import React from 'react'
-import { FieldErrors, UseFormRegister } from 'react-hook-form'
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form'
 
-interface InputFileProps extends Partial<HTMLInputElement> {
-  register: UseFormRegister<any>,
+interface InputFileProps{
+  register: UseFormRegister<FieldValues>,
   errors: FieldErrors,
   label : string,
   name: string,
@@ -27,9 +27,9 @@ const InputFile : React.FC<InputFileProps> =  ({register,errors,label,id, value,
   return (
     <div className='flex-1'>
       <label htmlFor={id} className='mb-4 block'>{label}</label>
-      <input type="file" {...register(name)} accept='image/png, image/jpg' multiple={false} className='file-input file-input-bordered file-input-primary w-full ' id="" />
+      <input type="file" {...register(name)} multiple={false} className='file-input file-input-bordered file-input-primary w-full ' id={id} {...d} />
       {errors[name] ? (
-        <span className='text-xs text-error'>{errors.title.message ?? ""}</span>
+        <span className='text-xs text-error'>{String(errors?.title?.message) ?? ""}</span>
       ) : ""}
     </div>
   )

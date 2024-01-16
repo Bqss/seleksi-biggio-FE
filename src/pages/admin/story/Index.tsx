@@ -1,6 +1,6 @@
 import Modal from "@/components/mollecules/Modal";
 import MainLayout from "@/layouts/MainLayout";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 import Dropdown from "@/components/mollecules/Dropdown";
@@ -159,7 +159,7 @@ const Index = () => {
                   <td>{story.title}</td>
                   <td>{story.author}</td>
                   <td>{story.category}</td>
-                  <td>{JSON.parse(story.tags).map((tag: any, i) => {
+                  <td>{JSON.parse(story.tags).map((tag: any, i:number) => {
                     return <span key={i} className="badge text-white badge-secondary">{tag}</span>
                   })}</td>
                   <td>{story.status}</td>
