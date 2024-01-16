@@ -1,15 +1,15 @@
-import InputFile from '@/components/atoms/InputFile';
+
 import MainLayout from '@/layouts/MainLayout'
-import axios from 'axios';
+import axiosInstance from '@/services/Axios';
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import {  useParams } from 'react-router';
 import { TagsInput } from 'react-tag-input-component';
 
 const DetailStory = () => {
   const {id : StoryId } = useParams();
   const [story, setStory] = useState<Story>();
   useEffect(() => {
-    axios.get(`http://localhost:3000/api/story/${StoryId}`).then(res => {
+    axiosInstance.get(`http://localhost:3000/api/story/${StoryId}`).then(res => {
       setStory(res.data.data);
     }).catch(err => {
       console.log(err);

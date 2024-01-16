@@ -1,7 +1,7 @@
 import Modal from "@/components/mollecules/Modal";
 import MainLayout from "@/layouts/MainLayout";
 import { useState } from "react";
-import axios from "axios";
+import axiosInstance from "@/services/Axios";
 import { useNavigate } from "react-router";
 import Dropdown from "@/components/mollecules/Dropdown";
 import { paramify, useQueryParams } from "@/utils/paramsUtil";
@@ -25,7 +25,7 @@ const Index = () => {
     queryKey: ['stories', searchParams, category, status],
     queryFn: async function ()  {
       console.log(category)
-      const { data } = await axios.get("http://localhost:3000/api/story" + paramify({
+      const { data } = await axiosInstance.get("/story" + paramify({
         search: searchParams,
         category,
         status
@@ -69,7 +69,7 @@ const Index = () => {
 
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/api/story/${storyId}`).then(res => {
+        axiosInstance.delete(`/story/${storyId}`).then(res => {
           queryClient.invalidateQueries({
             queryKey: ['stories', searchParams, category, status]
           });

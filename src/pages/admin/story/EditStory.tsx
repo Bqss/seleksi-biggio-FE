@@ -4,7 +4,7 @@ import MainLayout from '@/layouts/MainLayout'
 import sweetAlert from '@/services/Swal';
 import useStoryChapterStore from '@/store/StoryChapterStore';
 import { paramify, useQueryParams } from '@/utils/paramsUtil';
-import axios from 'axios';
+import axiosInstance from '@/services/Axios';
 import { useCallback, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router';
@@ -40,7 +40,7 @@ const EditStory = () => {
 
   useEffect(() => {
     if (!storyId) return;
-    axios.get(`http://localhost:3000/api/story/${storyId}`).then(res => {
+    axiosInstance.get(`http://localhost:3000/api/story/${storyId}`).then(res => {
       const story = res.data.data;
       reset({
         title: story?.title,
@@ -85,7 +85,7 @@ const EditStory = () => {
 
 
   const handleEdit = useCallback((formData: any) => {
-    axios.put("http://localhost:3000/api/story/" + storyId, {
+    axiosInstance.put("http://localhost:3000/api/story/" + storyId, {
       ...formData,
       chapters: storyChapters,
       tags: JSON.stringify(formData.tags),

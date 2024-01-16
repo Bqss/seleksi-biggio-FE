@@ -3,7 +3,7 @@ import MainLayout from '@/layouts/MainLayout'
 import sweetAlert from '@/services/Swal';
 import useStoryChapterStore from '@/store/StoryChapterStore';
 import { useMutation } from '@tanstack/react-query';
-import axios, { AxiosError } from 'axios';
+import axiosInstance from '@/services/Axios';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
@@ -44,7 +44,7 @@ const AddStory = () => {
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: async (formData: Story) => {
-      const data = await axios.post("http://localhost:3000/api/story", {
+      const data = await axiosInstance.post("http://localhost:3000/api/story", {
         ...formData,
       }, {
         headers: {
